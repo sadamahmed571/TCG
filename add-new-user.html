@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - ارشيف الثقة التجارية</title>
+    
+         <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    
+        
+        
+         <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <!-- css Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/add-new-user.css">
+    <style>
+        
+    </style>
+</head>
+ <body class="theme1"> 
+  <script src="js/theme-init.js"></script>
+ <!-- زر تغيير الثيم -->
+    <button class="change-theme" id="theme-toggle">
+     <i class="fa-solid fa-palette"></i>
+    </button>
+    <div class="section" id="home">
+        
+<!-- Registration Modal -->
+<div id="registerModal" class="modal">
+    <div class="modal-content add-modal-content">
+        <button class="modal-close" onclick="window.location.href='admin.html'">&times;</button>
+        <h3 class="modal-title">📝 تسجيل عضو جديد</h3>
+        
+        <form id="registerForm" class="modal-add-form">
+            <div class="modal-form-grid">
+                <div class="modal-form-group">
+                    <label for="registerName">الاسم الكامل *</label>
+                    <input type="text" id="registerName" required  >
+                </div>
+                
+                <div class="modal-form-group">
+                    <label for="registerCountry">البلد *</label>
+                    <input type="text" id="registerCountry" required  >
+                </div>
+            </div>
+            
+            <div class="modal-form-grid">
+                <div class="modal-form-group">
+                    <label for="registerAge">العمر *</label>
+                    <input type="number" id="registerAge" required placeholder="25" min="16" max="100">
+                </div>
+                
+                <div class="modal-form-group">
+                    <label for="registerResidence">السكن *</label>
+                    <input type="text" id="registerResidence" required  >
+                </div>
+            </div>
+                        
+             <div class="modal-form-grid">
+                <div class="modal-form-group">
+                    <label for="registerResidence">اسم المستخدم *</label>
+                    <input type="text" id="username" placeholder="بالاحرف الانجليزية" required  >
+                </div>
+                                 <div class="modal-form-group">
+                    <label for="registerAge">كلمة السر *</label>
+                    <input type="text" id="userpassword" required placeholder="كلمة المرور">
+                </div>
+            </div>
+            
+            <div class="modal-form-grid">
+                <div class="modal-form-group">
+                    <label for="userRole">الدور *</label>
+                    <select id="userRole" required>
+                        <option value="">اختر الدور</option>
+                        <option value="member">عضو</option>
+                        <option value="admin">مدير</option>
+                    </select>
+                </div>
+            </div>
+                        
+                        
+            <div class="modal-image-group">
+                <label for="registerPhoto">الصورة الشخصية</label>
+                <input type="file" id="registerPhoto" accept="image/*">
+            </div>
+            
+            <div class="contact-section">
+                <h4 class="section-title">معلومات التواصل</h4>
+                
+                <div class="dynamic-fields" id="registerPhoneFields">
+                    <label>أرقام الهواتف *</label>
+                    <div class="field-group">
+                        <input type="tel" placeholder="+966 50 123 4567" class="phone-input" required>
+                        <button type="button" onclick="addRegisterPhoneField()" class="add-field-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                
+                <div class="dynamic-fields">
+                    <label for="registerWhatsapp">رقم الواتساب *</label>
+                    <input type="tel" id="registerWhatsapp" required placeholder="+966 50 123 4567">
+                </div>
+                
+                <div class="dynamic-fields">
+                    <label for="registerEmail">البريد الإلكتروني *</label>
+                    <input type="email" id="registerEmail" required placeholder="example@email.com">
+                </div>
+                
+                <div class="dynamic-fields">
+                    <label for="registerOtherContact">ملاحظات</label>
+                    <textarea id="registerOtherContact"  rows="2"></textarea>
+                </div>
+            </div>
+            
+            <div class="modal-form-actions">
+                <button type="submit" class="login-btn">تأكيد العضوية</button>
+                <button type="button" onclick="closeRegisterModal()" class="cancel-btn">إلغاء</button>
+                                <button type="button" onclick="window.location.href='admin.html'" class="login-btn">الرجوع الى صقحة الادارة</button>
+            </div>
+        </form>
+    </div>
+</div>
+             
+      
+          
+ 
+
+    <!-- Include Supabase and services -->
+    <script src="js/theme-init.js"></script>
+    <script src="js/add-new-user-init.js"></script>
+    <script src="js/onclick-handlers.js"></script>
+    <script src="js/add-new-user-functions.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html>

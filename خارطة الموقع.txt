@@ -1,0 +1,140 @@
+خارطة الموقع (HTML + CSS)
+===========================
+
+ملف وصفي يساعد مطوّر الباك-إند على فهم هيكلة الصفحات والعناصر المهمة وربط البيانات. يتضمن:
+1) خريطة الصفحات وأغراضها
+2) المكوّنات/الأقسام المشتركة عبر الموقع
+3) المعرفات المشتركة (IDs) المهمة والمتكررة
+4) أهم المعرّفات الخاصة بكل صفحة (اختيارياً لأكثر الصفحات استخداماً)
+5) ملاحظات للتكامل مع الباك-إند
+
+----------------------------------------
+1) خريطة الصفحات وأغراضها
+----------------------------------------
+- index.html: صفحة الدخول/الهبوط (Landing/Login) الأساسية.
+- login.html: صفحة تسجيل الدخول.
+- dashboard.html: الصفحة الرئيسية ولوحة الترحيب والتكريم ومهام الفريق.
+- products-board.html: لوحة عرض المنتجات مع فلاتر وأنماط عرض متعددة.
+- product.html: صفحة تفاصيل المنتج الأساسية.
+- product-demo.html: نسخة تجريبية لعرض تفاصيل منتج مع بيانات افتراضية.
+- add-product.html: نموذج إضافة منتج جديد.
+- suppliers.html: دليل الموردين مع فلاتر وأنماط عرض.
+- add-supplier.html: نموذج إضافة مورد جديد.
+- single-supplier.html: صفحة عرض بيانات مورد مفصلة.
+- single-supplier-demo.html: نسخة تجريبية لعرض بيانات مورد مع بيانات افتراضية.
+- single-user.html: صفحة عرض بيانات عضو مفصلة.
+- profile.html: صفحة ملفي (حسابي) للمستخدم وإعداداته.
+- admin.html: صفحة الإدارة (الفئات، المستخدمين، الدردشة، النسخ الاحتياطي...)
+- start-here.html: صفحة البداية/التجربة والتعليمات.
+
+----------------------------------------
+2) المكوّنات/الأقسام المشتركة عبر الموقع
+----------------------------------------
+- رأس الصفحة Header (يتكرر في معظم الصفحات): شعار + قائمة رئيسية.
+- زر تغيير الثيم: مكوّن ثابت للوضع اللوني.
+- أزرار/نافذة دردشة الفريق.
+- أزرار/نافذة الذكاء الاصطناعي.
+- إشعار الرسائل المنبثق + صوت الإشعارات.
+
+----------------------------------------
+3) المعرفات المشتركة (IDs) المهمة والمتكررة
+----------------------------------------
+ملاحظة: قد تتكرر بعض المعرّفات في صفحات مختلفة (لا تُحمَّل معاً عادةً). يُفضّل أن يعتمد ربط الباك-إند على نطاق الصفحة + المعرّف.
+
+- theme-toggle: زر تبديل الثيم.
+- header: عنصر رأس الصفحة الرئيس.
+
+عناصر الدردشة (توجد في عدة صفحات):
+- chatToggle: زر فتح/إغلاق دردشة الفريق.
+- chatWindow: نافذة الدردشة.
+- chatHeader: ترويسة نافذة الدردشة.
+- chatArea: منطقة عرض الرسائل.
+- typingIndicator: مؤشّر الكتابة.
+- chatInput: حقل إدخال رسالة الدردشة.
+- sendBtn: زر إرسال رسالة الدردشة.
+- notificationBadge: شارة الإشعارات (قد توجد أيضًا notificationBadgeCard داخل بطاقات).
+- messageNotification: عنصر إشعار الرسائل المنبثق.
+- notificationAvatar, notificationSender, notificationText: تفاصيل الإشعار.
+- notificationSound: عنصر الصوت لإشعار الرسائل.
+
+عناصر الذكاء الاصطناعي (توجد في عدة صفحات):
+- aiToggle: زر فتح/إغلاق نافذة الذكاء الاصطناعي.
+- aiWindow: نافذة الذكاء الاصطناعي.
+- aiHeader: ترويسة نافذة الذكاء الاصطناعي.
+- aiArea: منطقة رسائل الذكاء الاصطناعي.
+- aiTypingIndicator: مؤشّر كتابة الذكاء الاصطناعي.
+- aiInput: حقل إدخال استفسار للذكاء الاصطناعي.
+- aiSendBtn: زر الإرسال لنافذة الذكاء الاصطناعي.
+- aiToggleCard: زر فتح الذكاء الاصطناعي من بطاقة في بعض الصفحات.
+
+أُخَر مشتركة محتملة:
+- scrollToTop: زر الرجوع لأعلى (dashboard.html).
+
+----------------------------------------
+4) أهم المعرّفات الخاصة بكل صفحة (مختصر عملي)
+----------------------------------------
+
+dashboard.html:
+- dashboard: القسم الرئيسي للمحتوى.
+- WelcomeUsername: اسم المستخدم في الترحيب.
+- UserPoints: نقاط المستخدم.
+- WeekHonorUdser: اسم عضو الأسبوع في لوحة التكريم.
+- عناصر الدردشة والذكاء الاصطناعي كما في (3).
+
+products-board.html:
+- products-board: القسم الرئيسي للصفحة.
+- searchInput: مربع بحث المنتجات.
+- categoryFilter, supplierFilter, userFilter, sortFilter: فلاتر عرض المنتجات.
+- clearFilters: زر مسح الفلاتر (onclick).
+- viewMode: محدّد نمط العرض (شبكة/قائمة...)
+- productsGrid: حاوية بطاقات المنتجات.
+- noResults: رسالة عدم وجود نتائج.
+- dmQuickBtn: زر رسالة خاصة (اختياري/مخفي).
+- عناصر الدردشة والذكاء الاصطناعي كما في (3).
+
+suppliers.html:
+- suppliers: القسم الرئيسي للصفحة.
+- suppliersCount: عدّاد الموردين في الإحصاءات.
+- searchInput: مربع بحث الموردين (ملاحظة: اسم متكرر عبر صفحات أخرى).
+- countryFilter, industryFilter: فلاتر الموردين.
+- gridViewBtn, listViewBtn: أزرار نمط العرض.
+- suppliersGrid: شبكة بطاقات الموردين.
+- noSuppliers: رسالة عدم وجود موردين.
+- عناصر الدردشة والذكاء الاصطناعي كما في (3).
+
+single-supplier.html:
+- supplierLogo: شعار المورد.
+- userHeaderSection: قسم رأس المورد.
+- supplierName, supplierDescription, ratingStars, ratingValue.
+- supplierNameAr, supplierNameEn, supplierCountry, foundationYear, supplierIndustry, supplierExperience,
+  supplierCreatedAt, supplierUser, supplierSerial, supplierDescriptionLong.
+- supplierShipping, supplierPayment, averageShippingTime, supplierCertificates, supplierRating.
+- contactName, contactTitle, contactEmail, contactPhone, supplierWhatsapp, supplierWechat, preferredLanguage.
+- companySize, productionCapacity, customizationAbility, engineersCount, mainMarkets.
+- supplierPhone, supplierEmail, supplierWebsite, supplierAddress, supplierMapLink.
+- baseCurrency, incoterms, testReportsAvailable, auditPossibility.
+
+product.html (و/أو product-demo.html – مختصر):
+- mainImage, downloadImageBtn: الصورة الرئيسية وزر التحميل.
+- priceDetails: تفاصيل التسعير.
+- tabs/buttons شائعة: تبويبات بيانات عامة/الاستخدامات/المواصفات/الملفات/الموردين.
+
+single-user.html (مختصر):
+- حقول عرض بيانات العضو (حسب ما هو موجود/مضاف حديثًا للعرض).
+
+admin.html, add-product.html, add-supplier.html, profile.html, start-here.html:
+- تحتوي معرفات خاصة بالنماذج والأقسام؛ الرجاء اعتماد أسماء الحقول المعروضة في الواجهة (تم تنظيف الأنماط ضمن CSS لكل صفحة).
+
+----------------------------------------
+5) ملاحظات تكامل مع الباك-إند
+----------------------------------------
+- قد تتكرر بعض المعرّفات مثل searchInput و notificationBadge في صفحات مختلفة، لكنها لا تُحمّل معًا عادةً. يُفضّل دائمًا التقاط عناصر DOM في نطاق الصفحة الحالية (أو باستخدام محددات أكثر تحديدًا مثل القسم الرئيسي للصفحة).
+- يوصى ببناء خرائط ربط Data Mapping وفق الأقسام الرئيسة لكل صفحة (Products/Suppliers/User/Supplier) مع الاعتماد على المعرّفات المذكورة.
+- لإدخال/جلب البيانات:
+  • المنتجات: products-board.html (قائمة) → product.html / product-demo.html (تفاصيل)
+  • الموردون: suppliers.html (قائمة) → single-supplier.html / single-supplier-demo.html (تفاصيل)
+  • الأعضاء: profile.html (إدخال ذاتي) → single-user.html (عرض)
+- يُستحسن توحيد بعض المعرفات عبر النماذج وصفحات العرض لتسهيل الربط (تم ذلك جزئيًا في single-supplier.html).
+
+انتهى.
+

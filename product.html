@@ -1,0 +1,355 @@
+الان قم بانشاء صفحة هبوط لنموذج (اضافة مستلزمات التشغيل) بحيث يكون لكل الخانات الموجودة في النموذج يكون لها مكاناً للعرض في صفحة الهبوط .. استخدم هذا الكود التالي لاتشاء الصفحة
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج</title>
+    
+         <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans+Arabic:wght@100..900&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    
+        
+        
+         <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        
+        <!-- مكتبات -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+        
+        <!-- css Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product.css">
+        <link rel="stylesheet" href="css/responsive-product.css">
+</head>
+ <body class="theme1">  
+    <!-- زر تغيير الثيم -->
+    <button class="change-theme" id="theme-toggle">
+     <i class="fa-solid fa-palette"></i>
+    </button>
+
+
+   <!-- Header -->   
+    <header class="header" id="header">
+    <a href="dashboard.html" class="logo-container">
+        <div class="logo"> </div>
+        <div class="logo-text">أرشيف الثقة التجارية</div>
+    </a>
+    <button class="nav-toggle"><i class="fas fa-align-left"></i></button>
+    <nav class="main-menu">
+        <a href="dashboard.html" class="menu-item"><i class="fas fa-home"></i> الرئيسية</a>
+                 <a href="products-board.html" class="menu-item"><i class="fa-solid fa-cart-plus"></i> المنتجات</a>
+        <a href="suppliers.html" class="menu-item "><i class="fas fa-truck"></i> الموردين</a>
+        <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> ملفي الشخصي</a>
+        <a href="add-product.html" class="menu-item "><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+        <a href="add-supplier.html" class="menu-item "><i class="fas fa-truck-loading "></i> اضافة مورد</a>
+        <a href="index.html" class="menu-item logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+    </nav>
+</header>
+    
+
+  <!-- Main Content -->
+<div class="container">
+    <div class="product-container">
+        <div id="product-details">
+        <!-- Upper Section: Product Layout -->
+        <div class="product-layout">
+                <!-- Right Column: Product Info and Main Image -->
+            <div class="right-column" >
+                <div class="product-gallery">
+                    <div class="product-info">
+                                            <div class="product-meta">
+                            <div class="meta-item" id="productCategory">
+                                <i class="fas fa-box"></i>
+                                <span></span>
+                            </div>
+                            <div class="meta-item" id="productUser">
+                                <i class="fas fa-user"></i>
+                                <span></span>
+                            </div>
+                            <div class="meta-item" id="productDate">
+                                <i class="fas fa-calendar"></i>
+                                <span></span>
+                            </div>
+                            <div class="meta-item" id="productCode">
+                                <i class="fas fa-barcode"></i>
+                                <span></span>
+                            </div>
+                            <div class="meta-item" id="productSubCategory">
+                                <i class="fas fa-layer-group"></i>
+                                <span></span>
+                            </div>
+                            <div class="meta-item" id="productBrand">
+                                <i class="fas fa-copyright"></i>
+                                <span></span>
+                            </div>
+                            <div class="meta-item" id="productModel">
+                                <i class="fas fa-cube"></i>
+                                <span></span>
+                            </div>
+                                                </div>
+                        <h1 class="product-title" id="productTitle"></h1>
+                                                <p class="product-description" id="productDescription"></p>
+                        </div>
+                     
+                    
+                    <div class="main-image rel">
+                        <img id="mainImage" src="" alt="صورة المنتج" onerror="this.src='https://via.placeholder.com/800x450/1a1a2e/ffffff?text=صورة+المنتج'">
+                        <button id="downloadImageBtn" title="تحميل الصورة" 
+                                class="download-image-btn">
+                            <i class="fas fa-download"></i>
+                            تحميل الصورة
+                        </button>
+                    </div>
+                    
+                    <div class="image-thumbnails"></div>
+                </div>
+            </div>
+       
+        
+            <!-- Left Column: Price, Shipping, Sidebar -->
+            <div class="left-column">
+                
+                <!-- Product Price -->
+                <div class="price-container">
+                    <div class="price-title">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        الاسعار
+                    </div>
+                     
+                    <div class="price-details" id="priceDetails">
+                        <div class="price-grid">
+                            <div class="price-item">
+                                <div class="pricing-label"><i class="fa-solid fa-coins"></i> سعر التكلفة</div>
+                                <div class="price-amount" id="costPrice"></div>
+                                </div>
+                            <div class="price-item">
+                                <div class="pricing-label"><i class="fa-solid fa-tags"></i> سعر البيع</div>
+                                <div class="price-amount" id="sellingPrice"></div>
+                                </div>
+                            <div class="price-item">
+                                <div class="pricing-label"><i class="fa-solid fa-scale-balanced"></i> وحدة التسعير</div>
+                                <div class="price-amount" id="pricingUnit"></div>
+                                </div>
+                            <div class="price-item">
+                                <div class="pricing-label"><i class="fa-solid fa-boxes-stacked"></i> الحد الأدنى لكمية الطلب (MOQ)</div>
+                                <div class="price-amount" id="moq"></div>
+                            </div>
+                            <div class="price-item">
+                                <div class="pricing-label"><i class="fa-solid fa-percent"></i> الخصم</div>
+                                <div class="price-amount" id="discount"></div>
+                            </div>
+                            <div class="price-item">
+                                <div class="pricing-label"><i class="fa-solid fa-file-invoice-dollar"></i> الضريبة</div>
+                                <div class="price-amount" id="tax"></div>
+                            </div>
+                            <div class="price-item span-all">
+                                <div class="pricing-label"><i class="fa-solid fa-hand-holding-dollar"></i> شروط الدفع المقترحة</div>
+                                <div class="price-amount" id="paymentTerms"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                  <!-- Product Actions -->
+                <div class="product-actions">                           
+                    <button class="product-btn Favorite-btn" id="quoteBtn">
+                       <i class="fas fa-file-pdf"></i>
+                       انشاء عرض سعر
+                    </button> 
+                     <button class="product-btn share-btn bg-extra2" id="catalogBtn">
+                        <i class="fa-solid fa-file-pdf"></i>
+                       تحميل الكاتلوج
+                    </button>                  
+                </div>                        
+            </div>      
+          </div>
+        
+        <!-- Lower Section: Product Tabs -->
+        <div class="lower-section">
+            <div class="product-tabs">
+                <div class="tabs-header">
+                    <div class="tab-btn active" data-tab="general">بيانات عامة</div>
+                    <div class="tab-btn" data-tab="usages">استخدامات المنتج</div>
+                    <div class="tab-btn" data-tab="specs">مواصفات المنتج</div>
+                    <div class="tab-btn" data-tab="proscons">الميزات و السلبيات</div>
+                    <div class="tab-btn" data-tab="files">ملفات و روابط</div>
+                    <div class="tab-btn" data-tab="suppliers">الموردون</div>
+                </div>
+
+                <!-- General Info Tab -->
+                <div class="tab-content active" id="general">
+                    <div class="general-info-grid">
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-folder"></i> الفئة الرئيسية</div>
+                            <div class="value" id="genCategory"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-layer-group"></i> الفئة الفرعية</div>
+                            <div class="value" id="genSubCategory"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-copyright"></i> العلامة التجارية</div>
+                            <div class="value" id="genBrand"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-cube"></i> الموديل</div>
+                            <div class="value" id="genModel"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-tags"></i> الكلمات المفتاحية</div>
+                            <div class="value"><ul id="genKeywords" class="disc-list pr18 m0"></ul></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-user"></i> المسجل</div>
+                            <div class="value" id="genUser"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-calendar-alt"></i> تاريخ الإضافة</div>
+                            <div class="value" id="genCreatedAt"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-barcode"></i> الكود</div>
+                            <div class="value" id="genCode"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Usages Tab -->
+                <div class="tab-content" id="usages">
+                    <ul id="usagesList" class="disc-list pr20 my10-20"></ul>
+                </div>
+
+                <!-- Specifications Tab -->
+                <div class="tab-content" id="specs">
+                    <div class="specs-grid" id="specsGrid">
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-weight-hanging"></i> الوزن الصافي</div>
+                            <div class="value" id="specWeight"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-bolt"></i> متطلبات الطاقة (الجهد)</div>
+                            <div class="value" id="specVoltage"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-plug"></i> متطلبات الطاقة (الاستهلاك)</div>
+                            <div class="value" id="specConsumption"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-chart-line"></i> السعة / الكفاءة الإنتاجية</div>
+                            <div class="value" id="specCapacity"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-flask"></i> المواد الإنشائية الأساسية</div>
+                            <div class="value" id="specMaterials"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-globe"></i> بلد المنشأ</div>
+                            <div class="value" id="specOrigin"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-certificate"></i> معايير الجودة والاعتماد</div>
+                            <div class="value" id="specQuality"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-shield-alt"></i> الضمان والدعم الفني</div>
+                            <div class="value" id="specWarranty"></div>
+                        </div>
+                        <div class="general-info-item">
+                            <div class="label"><i class="fas fa-ruler-combined"></i> الأبعاد الهندسية</div>
+                            <div class="value">
+                                <span id="specLength"></span>
+                                <span class="mx6">×</span>
+                                <span id="specWidth"></span>
+                                <span class="mx6">×</span>
+                                <span id="specHeight"></span>
+                            </div>
+                        </div>
+                        <div class="general-info-item span-all">
+                            <div class="label"><i class="fas fa-clipboard-list"></i> المكونات الأساسية</div>
+                            <div class="value"><ul id="basicComponentsList" class="disc-list pr18 m0"></ul></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pros and Cons Tab -->
+                <div class="tab-content" id="proscons">
+                    <div>
+                        <h4 class="my10">ميزات المنتج</h4>
+                        <ul id="featuresList" class="disc-list pr20 my10-20"></ul>
+                    </div>
+                    <div>
+                        <h4 class="my10">سلبيات المنتج</h4>
+                        <ul id="negativesList" class="disc-list pr20 my10-20"></ul>
+                    </div>
+                </div>
+
+                <!-- Files and Links Tab -->
+                <div class="tab-content" id="files">
+                    <div id="productFilesSection">
+                        <h4><i class="fas fa-file-download"></i> ملفات المنتج</h4>
+                        <div id="productFilesContainer" class="files-container">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div id="productLinksSection" class="mt30">
+                        <h4><i class="fas fa-link"></i> روابط المنتج</h4>
+                        <div id="productLinksContainer" class="links-container">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suppliers Tab -->
+                <div class="tab-content" id="suppliers">
+                    <div class="suppliers-tab-list" id="suppliersTabList">
+                        <!-- سيتم إنشاء بطاقات الموردين هنا (اسم المورد، روابط، أسعار USD/CNY/YER) -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+         <!-- Footer
+    <footer class="footer">
+               <div class="copyright-content">
+                <div class="designer-info">
+                    <span class="designer-text">مصمم الموقع / صدام أحمد</span>
+                </div>          
+                <div class="icon-group4">
+                    <a href="https://www.facebook.com/s777967272" class="icon-btn4 icon-facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/967777967272" class="icon-btn4 icon-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+967777967272" class="icon-btn4 icon-phone">
+                        <i class="fa fa-phone"></i>
+                    </a>
+                    <a href="https://tecnotasxcatalog.netlify.app/" class="icon-btn4 icon-website" target="_blank">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+    </footer> -->
+     
+    <!--  Javascript -->
+    <script src="js/theme-init.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/product-pdf.js"></script>
+    <script src="js/product-functions.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html>
